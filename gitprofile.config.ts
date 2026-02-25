@@ -39,16 +39,14 @@ const CONFIG = {
           title: 'Mill River Municipal Development Plan (2026)',
           description:
             'The Mill River Development in New Haven is a major initiative to transform a formerly industrial, contaminated waterfront into a vibrant, mixed-use district, supported by $5 million in 2024 state funding.',
-          imageUrl:
-            'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg',
+          imageUrl: 'img/THC-L-English-Station_01_b0da68.jpg',
           link: 'https://som.yale.edu/story/2025/inclusive-growth-fellowship-welcomes-third-cohort',
         },
         {
           title: 'AI Calisthenics Tutor (2026)',
           description:
             'An AI powered coaching app that helps people improve bodyweight skills like pull ups, push ups, dips, and progressions by turning a simple phone video into actionable feedback (Yale Tsai CITY Launch Pad program)',
-          imageUrl:
-            'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg',
+          imageUrl: 'img/8c43624b-1cab-46d6-8ae0-178ccfe4616a.png',
           link: '',
         },
       ],
