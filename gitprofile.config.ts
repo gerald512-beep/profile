@@ -24,6 +24,7 @@ const CONFIG = {
             'gerald512-beep/profile',
             'gerald512-beep/chatapp_section_02',
             'gerald512-beep/mill-river-redevelopment',
+            'gerald512-beep/calisthenicstutor',
           ], // These projects will not be displayed. example: ['arifszn/my-project1', 'arifszn/my-project2']
         },
       },
@@ -37,22 +38,23 @@ const CONFIG = {
       // To hide the `External Projects` section, keep it empty.
       projects: [
         {
+          title: 'AI Calisthenics Tutor (2026)',
+          description:
+            'An AI powered coaching app that helps people improve bodyweight skills like pull ups, push ups, dips, and progressions by turning a simple phone video into actionable feedback (Yale Tsai CITY Launch Pad program)',
+          imageUrl: 'img/8c43624b-1cab-46d6-8ae0-178ccfe4616a.png',
+          link: 'https://gerald512-beep.github.io/calisthenicstutor/',
+        },
+        {
           title: 'Mill River Municipal Development Plan (2026)',
           description:
             'The Mill River Development in New Haven is a major initiative to transform a formerly industrial, contaminated waterfront into a vibrant, mixed-use district, supported by $5 million in 2024 state funding. (Yale Inclusive Fellowship Program)',
           imageUrl: 'img/THC-L-English-Station_01_b0da68.jpg',
           link: 'https://som.yale.edu/story/2025/inclusive-growth-fellowship-welcomes-third-cohort',
         },
-        {
-          title: 'AI Calisthenics Tutor (2026)',
-          description:
-            'An AI powered coaching app that helps people improve bodyweight skills like pull ups, push ups, dips, and progressions by turning a simple phone video into actionable feedback (Yale Tsai CITY Launch Pad program)',
-          imageUrl: 'img/8c43624b-1cab-46d6-8ae0-178ccfe4616a.png',
-          link: '',
-        },
       ],
     },
   },
+  rightColumnOrder: ['projects', 'github', 'publications', 'blog'],
   seo: {
     title: 'Portfolio of Gerald Velasquez',
     description: '',
@@ -78,7 +80,7 @@ const CONFIG = {
     telegram: '',
     website: '',
     phone: '',
-    email: '',
+    email: 'gerald.velasquez@yale.edu',
   },
   resume: {
     fileUrl: '', // Empty fileUrl will hide the `Download Resume` button.

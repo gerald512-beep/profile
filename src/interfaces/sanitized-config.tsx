@@ -36,6 +36,12 @@ export interface SanitizedProjects {
   external: SanitizedExternalProjects;
 }
 
+export type SanitizedRightColumnSection =
+  | 'projects'
+  | 'github'
+  | 'publications'
+  | 'blog';
+
 export interface SanitizedSEO {
   title?: string;
   description?: string;
@@ -127,6 +133,7 @@ export interface SanitizedThemeConfig {
 export interface SanitizedConfig {
   github: SanitizedGithub;
   projects: SanitizedProjects;
+  rightColumnOrder: SanitizedRightColumnSection[];
   seo: SanitizedSEO;
   social: SanitizedSocial;
   resume: SanitizedResume;

@@ -7,6 +7,7 @@ import colors from '../data/colors.json';
 import {
   SanitizedConfig,
   SanitizedHotjar,
+  SanitizedRightColumnSection,
   SanitizedThemeConfig,
 } from '../interfaces/sanitized-config';
 
@@ -22,6 +23,31 @@ type EventParams = {
 
 type Colors = {
   [key: string]: { color: string | null; url: string };
+};
+
+const DEFAULT_RIGHT_COLUMN_ORDER: SanitizedRightColumnSection[] = [
+  'github',
+  'publications',
+  'projects',
+  'blog',
+];
+
+const sanitizeRightColumnOrder = (
+  order: Config['rightColumnOrder'],
+): SanitizedRightColumnSection[] => {
+  const normalizedOrder = (Array.isArray(order) ? order : []).filter(
+    (section): section is SanitizedRightColumnSection =>
+      DEFAULT_RIGHT_COLUMN_ORDER.includes(
+        section as SanitizedRightColumnSection,
+      ),
+  );
+
+  const uniqueOrder = [...new Set(normalizedOrder)];
+  const missingSections = DEFAULT_RIGHT_COLUMN_ORDER.filter(
+    (section) => !uniqueOrder.includes(section),
+  );
+
+  return [...uniqueOrder, ...missingSections];
 };
 
 export const getSanitizedConfig = (
@@ -56,6 +82,7 @@ export const getSanitizedConfig = (
           projects: config?.projects?.external?.projects || [],
         },
       },
+      rightColumnOrder: sanitizeRightColumnOrder(config?.rightColumnOrder),
       seo: {
         title: config?.seo?.title,
         description: config?.seo?.description,

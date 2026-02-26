@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { Fragment, useCallback, useEffect, useState } from 'react';
 import axios, { AxiosError } from 'axios';
 import { formatDistance } from 'date-fns';
 import {
@@ -10,7 +10,10 @@ import {
 } from '../constants/errors';
 import '../assets/index.css';
 import { getInitialTheme, getSanitizedConfig, setupHotjar } from '../utils';
-import { SanitizedConfig } from '../interfaces/sanitized-config';
+import {
+  SanitizedConfig,
+  SanitizedRightColumnSection,
+} from '../interfaces/sanitized-config';
 import ErrorPage from './error-page';
 import { DEFAULT_THEMES } from '../constants/default-themes';
 import ThemeChanger from './theme-changer';
@@ -177,6 +180,41 @@ const GitProfile = ({ config }: { config: Config }) => {
     }
   };
 
+  const rightColumnSections = {
+    projects:
+      sanitizedConfig.projects.external.projects.length !== 0 ? (
+        <ExternalProjectCard
+          loading={loading}
+          header={sanitizedConfig.projects.external.header}
+          externalProjects={sanitizedConfig.projects.external.projects}
+          googleAnalyticId={sanitizedConfig.googleAnalytics.id}
+        />
+      ) : null,
+    github: sanitizedConfig.projects.github.display ? (
+      <GithubProjectCard
+        header={sanitizedConfig.projects.github.header}
+        limit={sanitizedConfig.projects.github.automatic.limit}
+        githubProjects={githubProjects}
+        loading={loading}
+        googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
+      />
+    ) : null,
+    publications:
+      sanitizedConfig.publications.length !== 0 ? (
+        <PublicationCard
+          loading={loading}
+          publications={sanitizedConfig.publications}
+        />
+      ) : null,
+    blog: sanitizedConfig.blog.display ? (
+      <BlogCard
+        loading={loading}
+        googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
+        blog={sanitizedConfig.blog}
+      />
+    ) : null,
+  } satisfies Record<SanitizedRightColumnSection, React.JSX.Element | null>;
+
   return (
     <div className="fade-in h-screen">
       {error ? (
@@ -239,38 +277,13 @@ const GitProfile = ({ config }: { config: Config }) => {
               </div>
               <div className="lg:col-span-2 col-span-1">
                 <div className="grid grid-cols-1 gap-6">
-                  {sanitizedConfig.projects.github.display && (
-                    <GithubProjectCard
-                      header={sanitizedConfig.projects.github.header}
-                      limit={sanitizedConfig.projects.github.automatic.limit}
-                      githubProjects={githubProjects}
-                      loading={loading}
-                      googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
-                    />
-                  )}
-                  {sanitizedConfig.publications.length !== 0 && (
-                    <PublicationCard
-                      loading={loading}
-                      publications={sanitizedConfig.publications}
-                    />
-                  )}
-                  {sanitizedConfig.projects.external.projects.length !== 0 && (
-                    <ExternalProjectCard
-                      loading={loading}
-                      header={sanitizedConfig.projects.external.header}
-                      externalProjects={
-                        sanitizedConfig.projects.external.projects
-                      }
-                      googleAnalyticId={sanitizedConfig.googleAnalytics.id}
-                    />
-                  )}
-                  {sanitizedConfig.blog.display && (
-                    <BlogCard
-                      loading={loading}
-                      googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
-                      blog={sanitizedConfig.blog}
-                    />
-                  )}
+                  {sanitizedConfig.rightColumnOrder.map((section) => {
+                    const sectionComponent = rightColumnSections[section];
+
+                    return sectionComponent ? (
+                      <Fragment key={section}>{sectionComponent}</Fragment>
+                    ) : null;
+                  })}
                 </div>
               </div>
             </div>

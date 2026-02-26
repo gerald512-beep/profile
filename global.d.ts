@@ -284,6 +284,8 @@ interface Blog {
   limit?: number;
 }
 
+type RightColumnSection = 'projects' | 'github' | 'publications' | 'blog';
+
 interface ThemeConfig {
   /**
    * Default theme
@@ -381,6 +383,13 @@ interface Config {
    * Blog config
    */
   blog?: Blog;
+
+  /**
+   * Right column section order
+   *
+   * Available values: 'projects' | 'github' | 'publications' | 'blog'
+   */
+  rightColumnOrder?: Array<RightColumnSection>;
 
   /**
    * Theme config
