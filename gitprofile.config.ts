@@ -23,6 +23,7 @@ const CONFIG = {
           projects: [
             'gerald512-beep/profile',
             'gerald512-beep/chatapp_section_02',
+            'gerald512-beep/mill-river-redevelopment',
           ], // These projects will not be displayed. example: ['arifszn/my-project1', 'arifszn/my-project2']
         },
       },
@@ -38,7 +39,7 @@ const CONFIG = {
         {
           title: 'Mill River Municipal Development Plan (2026)',
           description:
-            'The Mill River Development in New Haven is a major initiative to transform a formerly industrial, contaminated waterfront into a vibrant, mixed-use district, supported by $5 million in 2024 state funding.',
+            'The Mill River Development in New Haven is a major initiative to transform a formerly industrial, contaminated waterfront into a vibrant, mixed-use district, supported by $5 million in 2024 state funding. (Yale Inclusive Fellowship Program)',
           imageUrl: 'img/THC-L-English-Station_01_b0da68.jpg',
           link: 'https://som.yale.edu/story/2025/inclusive-growth-fellowship-welcomes-third-cohort',
         },
